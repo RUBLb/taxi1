@@ -12,9 +12,9 @@ class WorkerController extends Controller
      */
     public function index()
     {
-        $events = EventResource::collection(Event::all());
+        $worker = (worker::all());
 
-        return $events;
+        return $worker;
     }
 
     /**
@@ -30,7 +30,19 @@ class WorkerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->id ==null)
+        {
+            $worker = new Worker;
+
+            $worker->name = $request->name;
+            $worker->car_brand = $request->car_brand;
+            $worker->car_number = $request->car_number;
+            $worker->car_color = $request->car_color;
+            $worker->driver_status = $request->driver_status;
+
+            $worker->save();
+            return $worker;
+        }
     }
 
     /**

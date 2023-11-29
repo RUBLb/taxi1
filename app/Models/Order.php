@@ -11,13 +11,13 @@ class Order extends Model
 
     protected $filllabel = ['date','place_of_dicpatch','place_of_arrival','price','order_status','feedback','workers_id','dispatchers_id',];
 
-    public function Worker()
+    public function Workers()
     {
-        return $this->belongsTo(related: Worker::class, foreginKey: 'workers_id', ownerKey:'id');
+        return $this->belongsTo(Workers::class,'workers_id','id');
     }
 
     public function Dispatchers()
     {
-        return $this->belongsTo(related: Dispatchers::class, foreginKey: 'workers_id', ownerKey:'id');
+        return $this->belongsTo(Dispatchers::class,'dispatchers_id','id');
     }
 }

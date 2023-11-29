@@ -12,9 +12,9 @@ class DispatcherController extends Controller
      */
     public function index()
     {
-        $events = EventResource::collection(Event::all());
+        $dispatcher = (dispatcher::all());
 
-        return $events;
+        return $dispatcher;
     }
 
     /**
@@ -30,7 +30,16 @@ class DispatcherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->id ==null)
+        {
+            $dispatcher = new Dispatcher;
+
+            $dispatcher->name = $request->name;
+            $dispatcher->number = $request->number;
+
+            $dispatcher->save();
+            return $dispatcher;
+        }
     }
 
     /**

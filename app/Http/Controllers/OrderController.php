@@ -12,9 +12,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $events = EventResource::collection(Event::all());
+        $order = (order::all());
 
-        return $events;
+        return $order;
     }
 
     /**
@@ -30,7 +30,21 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->id ==null)
+        {
+            $order = new Order;
+
+            $order->date = $request->date;
+            $order->place_of_dicpatch = $request->place_of_dicpatch;
+            $order->place_of_arrival = $request->place_of_arrival;
+            $order->order_status = $request->order_status;
+            $order->feedback = $request->feedback;
+            $order->workers_id = $request->workers_id;
+            $order->dispatchers_id = $request->dispatchers_id;
+
+            $order->save();
+            return $order;
+        }
     }
 
     /**
