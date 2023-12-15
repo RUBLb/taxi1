@@ -66,7 +66,20 @@ class WorkerController extends Controller
      */
     public function update(Request $request, Worker $worker)
     {
-        //
+        if($request->id ==null)
+        {
+            $worker = new Worker;
+
+            $worker->name = $request->name;
+            $worker->car_brand = $request->car_brand;
+            $worker->car_number = $request->car_number;
+            $worker->car_color = $request->car_color;
+            $worker->driver_status = $request->driver_status;
+
+            $worker->save();
+            
+            return true;
+        } 
     }
 
     /**

@@ -63,7 +63,17 @@ class DispatcherController extends Controller
      */
     public function update(Request $request, Dispatcher $dispatcher)
     {
-        //
+        if($request->id ==null)
+        {
+            $dispatcher = new Dispatcher;
+
+            $dispatcher->name = $request->name;
+            $dispatcher->number = $request->number;
+
+            $dispatcher->save();
+            
+            return true;
+        }
     }
 
     /**

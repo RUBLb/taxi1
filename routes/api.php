@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DispatcherController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\WorkerController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,11 +30,16 @@ Route::prefix('Order')->group(function(){
     Route::get('/workers_id',[OrderController::class, 'workers_id']);
     Route::get('/dispatchers_id',[OrderController::class, 'dispatchers_id']);
     Route::post('/', [OrderController::class, 'store']);
+    Route::delete('/{id}', [OrderController::class, 'destroy']);
+    Route::put('/', [OrderController::class, 'update']);
+    
 });
 Route::prefix('Dispatcher')->group(function(){
     Route::get('/name',[DispatcherController::class, 'name']);
     Route::get('/number',[DispatcherController::class, 'number']);
     Route::post('/', [DispatherController::class, 'store']);
+    Route::delete('/{id}', [DispatcherController::class, 'destroy']);
+    Route::put('/', [DispatherController::class, 'update']);
 });
 
 Route::prefix('Worker')->group(function(){
@@ -42,4 +49,6 @@ Route::prefix('Worker')->group(function(){
     Route::get('/car_color',[WorkerController::class, 'car_color']);
     Route::get('/driver_status',[WorkerController::class, 'driver_status']);
     Route::post('/', [WorkerController::class, 'store']);
+    Route::delete('/{id}', [WorkerController::class, 'destroy']);
+    Route::put('/', [WorkerController::class, 'update']);
 });
